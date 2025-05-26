@@ -24,7 +24,7 @@ jobs:
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
-          username: ${{ github.actor }}
+          username: codedoga
           password: ${{ secrets.GHCR_TOKEN }}
 
       - name: Build and push
@@ -32,7 +32,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: imagorvideo:latest,imagorvideo:${{ github.sha }}
+          tags: ghcr.io/codedoga/imagorvideo:latest:latest,ghcr.io/codedoga/imagorvideo:latest:${{ github.sha }}
           platforms: linux/arm64
           cache-from: type=registry,ref=ghcr.io/codedoga/imagorvideo:latest
           cache-to: type=inline
