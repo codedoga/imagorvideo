@@ -1,0 +1,43 @@
+name: docker
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ master ]
+
+
+jobs:
+  if: github.repository == 'codedoga/imagorvideo'
+
+  build:
+    name: Docker
+    runs-on: ubuntu-latest-arm64
+    permissions:
+      contents: read
+      packages: write
+      id-token: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GHCR_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: 
+            - ghcr.io/codedoga/imagorvideo:latest
+            - ghcr.io/codedoga/imagorvideo:${{ github.sha }}
+          platforms: linux/arm64
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      
