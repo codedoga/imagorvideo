@@ -32,9 +32,7 @@ jobs:
         with:
           context: .
           push: true
-          tags: 
-            - ghcr.io/codedoga/imagorvideo:latest
-            - ghcr.io/codedoga/imagorvideo:${{ github.sha }}
+          tags: imagorvideo:latest,imagorvideo:${{ github.sha }}
           platforms: linux/arm64
           cache-from: type=gha
           cache-to: type=gha,mode=max
