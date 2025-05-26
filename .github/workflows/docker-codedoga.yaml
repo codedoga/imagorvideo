@@ -34,7 +34,7 @@ jobs:
           push: true
           tags: imagorvideo:latest,imagorvideo:${{ github.sha }}
           platforms: linux/arm64
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          cache-from: type=registry,ref=ghcr.io/codedoga/imagorvideo:latest
+          cache-to: type=inline
 
       
