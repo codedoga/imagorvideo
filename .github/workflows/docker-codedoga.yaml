@@ -9,7 +9,7 @@ on:
 jobs:
   build:
     name: Docker
-    runs-on: ubuntu-latest-arm64
+    runs-on: ubuntu-24.04-arm
     if: github.repository == 'codedoga/imagorvideo'
     permissions:
       contents: read
