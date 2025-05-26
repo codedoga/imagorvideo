@@ -7,11 +7,10 @@ on:
 
 
 jobs:
-  if: ${{ github.repository == 'codedoga/imagorvideo' }}
-
   build:
     name: Docker
     runs-on: ubuntu-latest-arm64
+    if: github.repository == 'codedoga/imagorvideo'
     permissions:
       contents: read
       packages: write
