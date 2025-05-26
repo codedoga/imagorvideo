@@ -8,3 +8,5 @@ tmp/
 .vscode
 bin/imagorvideo
 profile.cov
+Dockerfile
+.dockerignore
