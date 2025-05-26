@@ -7,7 +7,7 @@ on:
 
 
 jobs:
-  if: github.repository == 'codedoga/imagorvideo'
+  if: ${{ github.repository == 'codedoga/imagorvideo' }}
 
   build:
     name: Docker
